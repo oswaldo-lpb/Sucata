@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Sucata
+{
+    public partial class frmUsuario : Form
+    {
+        private void HabilitaEdicao()
+        {
+            nmUsuarioTextBox.Enabled = true;
+            nmLoginTextBox.Enabled = true;
+            cdSenhaTextBox.Enabled = true;
+            btnAnterior.Enabled = false;
+            btnProximo.Enabled = false;
+            btnNovo.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnPesquisar.Enabled = false;
+            btnImprimir.Enabled = false;
+            btnSair.Enabled = false;
+        }
+
+        private void DesabilitaEdicao()
+        {
+            nmUsuarioTextBox.Enabled = false;
+            nmLoginTextBox.Enabled = false;
+            cdSenhaTextBox.Enabled = false;
+            btnAnterior.Enabled = true;
+            btnProximo.Enabled = true;
+            btnNovo.Enabled = true;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnPesquisar.Enabled = true;
+            btnImprimir.Enabled = true;
+            btnSair.Enabled = true;
+        }
+
+        public frmUsuario()
+        {
+            InitializeComponent();
+        }
+
+        private void frmUsuario_Load(object sender, EventArgs e)
+        {
+            // TODO: esta linha de código carrega dados na tabela 'bDSucataDataSet.tbUsuario'. Você pode movê-la ou removê-la conforme necessário.
+            this.tbUsuarioTableAdapter.Fill(this.bDSucataDataSet.tbUsuario);
+            DesabilitaEdicao();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            tbUsuarioBindingSource.MovePrevious();
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e)
+        {
+            tbUsuarioBindingSource.MoveNext();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            tbUsuarioBindingSource.AddNew();
+            HabilitaEdicao();
+            nmUsuarioTextBox.Focus();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (tbUsuarioBindingSource.Count > 0)
+            {
+                HabilitaEdicao();
+                nmUsuarioTextBox.Focus();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (tbUsuarioBindingSource.Count > 0)
+            {
+                if (MessageBox.Show("Confirma exclusão?", "Excluir Usuário", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    tbUsuarioBindingSource.RemoveCurrent();
+                    Validate();
+                    tbUsuarioTableAdapter.Update(bDSucataDataSet.tbUsuario);
+                }
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Validate();
+            tbUsuarioBindingSource.EndEdit();
+            tbUsuarioTableAdapter.Update(bDSucataDataSet.tbUsuario);
+            DesabilitaEdicao();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            tbUsuarioBindingSource.CancelEdit();
+            DesabilitaEdicao();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            int cod = 0, reg;
+            frmUsuarioPesquisa fup = new frmUsuarioPesquisa();
+            fup.ShowDialog();
+            cod = fup.getCodigo();
+            if (cod > 0)
+            {
+                reg = tbUsuarioBindingSource.Find("cdUsuario", cod);
+                tbUsuarioBindingSource.Position = reg;
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.SetBounds(0, 0, Screen.GetBounds(this).Width, Screen.GetBounds(this).Height);
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void nmUsuarioTextBox_Enter(object sender, EventArgs e)
+        {
+            ((TextBox)sender).ForeColor = Color.White;
+            ((TextBox)sender).BackColor = Color.Blue;
+        }
+
+        private void nmUsuarioTextBox_Leave(object sender, EventArgs e)
+        {
+            ((TextBox)sender).ForeColor = Color.Black;
+            ((TextBox)sender).BackColor = Color.White;
+        }
+
+        private void frmUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            Control ctl = (Form)sender; //this.cd_usuarioTextBox.Parent ou (Control)sender
+            if ((e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down) && btnSalvar.Enabled)
+            {
+                // Ativa o próximo controle (segundo parâmetro indica se próximo "true" ou anterior "false")
+                ctl.SelectNextControl(ActiveControl, true, true, true, true);
+            }
+            else if (e.KeyCode == Keys.Up && btnSalvar.Enabled)
+            {
+                // Ativa o controle anterior (segundo parâmetro indica se próximo "true" ou anterior "false")
+                ctl.SelectNextControl(ActiveControl, false, true, true, true);
+            }
+            else if (e.KeyCode == Keys.F2 && !btnSalvar.Enabled) btnAnterior_Click(sender, e);
+            else if (e.KeyCode == Keys.F3 && !btnSalvar.Enabled) btnProximo_Click(sender, e);
+            else if (e.KeyCode == Keys.F4 && !btnSalvar.Enabled) btnNovo_Click(sender, e);
+            else if (e.KeyCode == Keys.F5 && !btnSalvar.Enabled) btnAlterar_Click(sender, e);
+            else if (e.KeyCode == Keys.F6 && !btnSalvar.Enabled) btnExcluir_Click(sender, e);
+            else if (e.KeyCode == Keys.F7 && btnSalvar.Enabled)
+            {
+                btnSalvar.Focus();
+                btnSalvar_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F8 && btnSalvar.Enabled)
+            {
+                btnCancelar.Focus();
+                btnCancelar_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F9 && !btnSalvar.Enabled) btnPesquisar_Click(sender, e);
+            else if (e.KeyCode == Keys.F10 && !btnSalvar.Enabled) btnImprimir_Click(sender, e);
+            else if (e.KeyCode == Keys.Escape && !btnSalvar.Enabled) btnSair_Click(sender, e);
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Graphics objImpressao = e.Graphics;
+            string strDados;
+
+            strDados = "Ficha de Usuário" + (char)10 + (char)10;
+            strDados = strDados + "Código: "+cdUsuarioTextBox.Text + (char)10 + (char)10;
+            strDados = strDados + "Nome: " + nmUsuarioTextBox.Text + (char)10 + (char)10;
+            strDados = strDados + "Login: " + nmLoginTextBox.Text;
+
+            objImpressao.DrawString(strDados, new System.Drawing.Font("Arial", 12, FontStyle.Bold), Brushes.Black, 50, 50);
+
+            objImpressao.DrawLine(new System.Drawing.Pen(Brushes.Black, 1), 50, 80, 780, 80);
+            //objImpressao.DrawImage(Image.FromFile(@"C:\Users\Public\Pictures\Sample Pictures\desert.jpg"), 50, 200, 730, 400);
+        }
+    }
+}
