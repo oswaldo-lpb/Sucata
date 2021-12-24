@@ -34,6 +34,7 @@
             System.Windows.Forms.Label vlCompraLabel;
             System.Windows.Forms.Label vlVendaLabel;
             System.Windows.Forms.Label qtProdutoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
             this.bDSucataDataSet = new Sucata.BDSucataDataSet();
             this.tbProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbProdutoTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbProdutoTableAdapter();
@@ -53,6 +54,8 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             cdProdutoLabel = new System.Windows.Forms.Label();
             nmProdutoLabel = new System.Windows.Forms.Label();
             vlCompraLabel = new System.Windows.Forms.Label();
@@ -131,6 +134,7 @@
             // 
             this.cdProdutoTextBox.BackColor = System.Drawing.Color.White;
             this.cdProdutoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbProdutoBindingSource, "cdProduto", true));
+            this.cdProdutoTextBox.Enabled = false;
             this.cdProdutoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdProdutoTextBox.ForeColor = System.Drawing.Color.Black;
             this.cdProdutoTextBox.Location = new System.Drawing.Point(236, 44);
@@ -145,9 +149,12 @@
             this.nmProdutoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmProdutoTextBox.ForeColor = System.Drawing.Color.Black;
             this.nmProdutoTextBox.Location = new System.Drawing.Point(236, 90);
+            this.nmProdutoTextBox.MaxLength = 50;
             this.nmProdutoTextBox.Name = "nmProdutoTextBox";
-            this.nmProdutoTextBox.Size = new System.Drawing.Size(406, 26);
+            this.nmProdutoTextBox.Size = new System.Drawing.Size(467, 26);
             this.nmProdutoTextBox.TabIndex = 4;
+            this.nmProdutoTextBox.Enter += new System.EventHandler(this.nmProdutoTextBox_Enter);
+            this.nmProdutoTextBox.Leave += new System.EventHandler(this.nmProdutoTextBox_Leave);
             // 
             // vlCompraTextBox
             // 
@@ -159,6 +166,8 @@
             this.vlCompraTextBox.Name = "vlCompraTextBox";
             this.vlCompraTextBox.Size = new System.Drawing.Size(100, 26);
             this.vlCompraTextBox.TabIndex = 6;
+            this.vlCompraTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vlCompraTextBox.TextChanged += new System.EventHandler(this.vlCompraTextBox_TextChanged);
             // 
             // vlVendaTextBox
             // 
@@ -170,6 +179,8 @@
             this.vlVendaTextBox.Name = "vlVendaTextBox";
             this.vlVendaTextBox.Size = new System.Drawing.Size(100, 26);
             this.vlVendaTextBox.TabIndex = 8;
+            this.vlVendaTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vlVendaTextBox.TextChanged += new System.EventHandler(this.vlVendaTextBox_TextChanged);
             // 
             // qtProdutoTextBox
             // 
@@ -181,6 +192,8 @@
             this.qtProdutoTextBox.Name = "qtProdutoTextBox";
             this.qtProdutoTextBox.Size = new System.Drawing.Size(100, 26);
             this.qtProdutoTextBox.TabIndex = 10;
+            this.qtProdutoTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.qtProdutoTextBox.TextChanged += new System.EventHandler(this.qtProdutoTextBox_TextChanged);
             // 
             // panel1
             // 
@@ -227,6 +240,7 @@
             this.btnImprimir.Text = "F10 - Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnPesquisar
             // 
@@ -240,6 +254,7 @@
             this.btnPesquisar.Text = "F9 - Pequisar";
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -253,6 +268,7 @@
             this.btnCancelar.Text = "F8 - Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -266,6 +282,7 @@
             this.btnSalvar.Text = "F7 - Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -279,6 +296,7 @@
             this.btnExcluir.Text = "F6 - Excluir";
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -292,6 +310,7 @@
             this.btnAlterar.Text = "F5 - Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnNovo
             // 
@@ -305,6 +324,7 @@
             this.btnNovo.Text = "F4 - Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnProximo
             // 
@@ -318,6 +338,7 @@
             this.btnProximo.Text = "F3 - Próximo";
             this.btnProximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
             // btnAnterior
             // 
@@ -331,6 +352,22 @@
             this.btnAnterior.Text = "F2 - Anterior";
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // frmProduto
             // 
@@ -356,6 +393,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
             this.Load += new System.EventHandler(this.frmProduto_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProduto_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bDSucataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbProdutoBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -386,5 +424,7 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnProximo;
         private System.Windows.Forms.Button btnAnterior;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

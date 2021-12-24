@@ -48,14 +48,12 @@
             this.bDSucataDataSet = new Sucata.BDSucataDataSet();
             this.tbClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbClienteTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbClienteTableAdapter();
-            this.tableAdapterManager = new Sucata.BDSucataDataSetTableAdapters.TableAdapterManager();
             this.cdClienteTextBox = new System.Windows.Forms.TextBox();
             this.nmClienteTextBox = new System.Windows.Forms.TextBox();
             this.dsEnderecoTextBox = new System.Windows.Forms.TextBox();
             this.nrNumeroTextBox = new System.Windows.Forms.TextBox();
             this.nmBairroTextBox = new System.Windows.Forms.TextBox();
             this.nmCidadeTextBox = new System.Windows.Forms.TextBox();
-            this.sgEstadoTextBox = new System.Windows.Forms.TextBox();
             this.cdCEPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sgFIJUTextBox = new System.Windows.Forms.TextBox();
             this.cdCPFMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -79,6 +77,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.tableAdapterManager = new Sucata.BDSucataDataSetTableAdapters.TableAdapterManager();
+            this.sgEstadoComboBox = new System.Windows.Forms.ComboBox();
             cdClienteLabel = new System.Windows.Forms.Label();
             nmClienteLabel = new System.Windows.Forms.Label();
             dsEnderecoLabel = new System.Windows.Forms.Label();
@@ -233,11 +233,11 @@
             // 
             vlSaldoLabel.AutoSize = true;
             vlSaldoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            vlSaldoLabel.Location = new System.Drawing.Point(566, 271);
+            vlSaldoLabel.Location = new System.Drawing.Point(586, 271);
             vlSaldoLabel.Name = "vlSaldoLabel";
-            vlSaldoLabel.Size = new System.Drawing.Size(75, 20);
+            vlSaldoLabel.Size = new System.Drawing.Size(50, 20);
             vlSaldoLabel.TabIndex = 27;
-            vlSaldoLabel.Text = "Saldo R$";
+            vlSaldoLabel.Text = "Saldo";
             // 
             // dsTelefoneLabel
             // 
@@ -262,26 +262,6 @@
             // tbClienteTableAdapter
             // 
             this.tbClienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tbClienteTableAdapter = this.tbClienteTableAdapter;
-            this.tableAdapterManager.tbCompradorTableAdapter = null;
-            this.tableAdapterManager.tbCompraItemTableAdapter = null;
-            this.tableAdapterManager.tbCompraPagTableAdapter = null;
-            this.tableAdapterManager.tbCompraTableAdapter = null;
-            this.tableAdapterManager.tbFormaPagTableAdapter = null;
-            this.tableAdapterManager.tbFuncionarioTableAdapter = null;
-            this.tableAdapterManager.tbMovCliTableAdapter = null;
-            this.tableAdapterManager.tbMovComTableAdapter = null;
-            this.tableAdapterManager.tbPagarTableAdapter = null;
-            this.tableAdapterManager.tbProdutoTableAdapter = null;
-            this.tableAdapterManager.tbUsuarioTableAdapter = null;
-            this.tableAdapterManager.tbVendaItemTableAdapter = null;
-            this.tableAdapterManager.tbVendaPagTableAdapter = null;
-            this.tableAdapterManager.tbVendaTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Sucata.BDSucataDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // cdClienteTextBox
             // 
@@ -365,21 +345,6 @@
             this.nmCidadeTextBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
             this.nmCidadeTextBox.Leave += new System.EventHandler(this.nmClienteTextBox_Leave);
             // 
-            // sgEstadoTextBox
-            // 
-            this.sgEstadoTextBox.BackColor = System.Drawing.Color.White;
-            this.sgEstadoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.sgEstadoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbClienteBindingSource, "sgEstado", true));
-            this.sgEstadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgEstadoTextBox.ForeColor = System.Drawing.Color.Black;
-            this.sgEstadoTextBox.Location = new System.Drawing.Point(176, 172);
-            this.sgEstadoTextBox.MaxLength = 2;
-            this.sgEstadoTextBox.Name = "sgEstadoTextBox";
-            this.sgEstadoTextBox.Size = new System.Drawing.Size(35, 26);
-            this.sgEstadoTextBox.TabIndex = 14;
-            this.sgEstadoTextBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
-            this.sgEstadoTextBox.Leave += new System.EventHandler(this.nmClienteTextBox_Leave);
-            // 
             // cdCEPMaskedTextBox
             // 
             this.cdCEPMaskedTextBox.BackColor = System.Drawing.Color.White;
@@ -404,7 +369,7 @@
             this.sgFIJUTextBox.Location = new System.Drawing.Point(176, 204);
             this.sgFIJUTextBox.MaxLength = 1;
             this.sgFIJUTextBox.Name = "sgFIJUTextBox";
-            this.sgFIJUTextBox.Size = new System.Drawing.Size(23, 26);
+            this.sgFIJUTextBox.Size = new System.Drawing.Size(22, 26);
             this.sgFIJUTextBox.TabIndex = 18;
             this.sgFIJUTextBox.TextChanged += new System.EventHandler(this.sgFIJUTextBox_TextChanged);
             this.sgFIJUTextBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
@@ -447,7 +412,7 @@
             this.cdCNPJMaskedTextBox.Location = new System.Drawing.Point(322, 236);
             this.cdCNPJMaskedTextBox.Mask = "00,000,000/0000-00";
             this.cdCNPJMaskedTextBox.Name = "cdCNPJMaskedTextBox";
-            this.cdCNPJMaskedTextBox.Size = new System.Drawing.Size(178, 26);
+            this.cdCNPJMaskedTextBox.Size = new System.Drawing.Size(160, 26);
             this.cdCNPJMaskedTextBox.TabIndex = 24;
             this.cdCNPJMaskedTextBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
             this.cdCNPJMaskedTextBox.Leave += new System.EventHandler(this.nmClienteTextBox_Leave);
@@ -491,7 +456,7 @@
             this.dsTelefoneTextBox.Location = new System.Drawing.Point(176, 268);
             this.dsTelefoneTextBox.MaxLength = 40;
             this.dsTelefoneTextBox.Name = "dsTelefoneTextBox";
-            this.dsTelefoneTextBox.Size = new System.Drawing.Size(324, 26);
+            this.dsTelefoneTextBox.Size = new System.Drawing.Size(306, 26);
             this.dsTelefoneTextBox.TabIndex = 28;
             this.dsTelefoneTextBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
             this.dsTelefoneTextBox.Leave += new System.EventHandler(this.nmClienteTextBox_Leave);
@@ -510,7 +475,7 @@
             this.panel1.Controls.Add(this.btnProximo);
             this.panel1.Controls.Add(this.btnAnterior);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 308);
+            this.panel1.Location = new System.Drawing.Point(0, 314);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 142);
             this.panel1.TabIndex = 31;
@@ -692,13 +657,75 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.tbClienteTableAdapter = this.tbClienteTableAdapter;
+            this.tableAdapterManager.tbCompradorTableAdapter = null;
+            this.tableAdapterManager.tbCompraItemTableAdapter = null;
+            this.tableAdapterManager.tbCompraPagTableAdapter = null;
+            this.tableAdapterManager.tbCompraTableAdapter = null;
+            this.tableAdapterManager.tbFormaPagTableAdapter = null;
+            this.tableAdapterManager.tbFuncionarioTableAdapter = null;
+            this.tableAdapterManager.tbMovCliTableAdapter = null;
+            this.tableAdapterManager.tbMovComTableAdapter = null;
+            this.tableAdapterManager.tbPagarTableAdapter = null;
+            this.tableAdapterManager.tbProdutoTableAdapter = null;
+            this.tableAdapterManager.tbUsuarioTableAdapter = null;
+            this.tableAdapterManager.tbVendaItemTableAdapter = null;
+            this.tableAdapterManager.tbVendaPagTableAdapter = null;
+            this.tableAdapterManager.tbVendaTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Sucata.BDSucataDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // sgEstadoComboBox
+            // 
+            this.sgEstadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbClienteBindingSource, "sgEstado", true));
+            this.sgEstadoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sgEstadoComboBox.FormattingEnabled = true;
+            this.sgEstadoComboBox.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.sgEstadoComboBox.Location = new System.Drawing.Point(176, 172);
+            this.sgEstadoComboBox.MaxLength = 2;
+            this.sgEstadoComboBox.Name = "sgEstadoComboBox";
+            this.sgEstadoComboBox.Size = new System.Drawing.Size(46, 28);
+            this.sgEstadoComboBox.TabIndex = 14;
+            this.sgEstadoComboBox.Enter += new System.EventHandler(this.nmClienteTextBox_Enter);
+            this.sgEstadoComboBox.Leave += new System.EventHandler(this.nmClienteTextBox_Leave);
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(803, 450);
+            this.ClientSize = new System.Drawing.Size(803, 456);
             this.ControlBox = false;
+            this.Controls.Add(this.sgEstadoComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -715,7 +742,6 @@
             this.Controls.Add(nmCidadeLabel);
             this.Controls.Add(this.nmCidadeTextBox);
             this.Controls.Add(sgEstadoLabel);
-            this.Controls.Add(this.sgEstadoTextBox);
             this.Controls.Add(cdCEPLabel);
             this.Controls.Add(this.cdCEPMaskedTextBox);
             this.Controls.Add(sgFIJULabel);
@@ -753,14 +779,12 @@
         private BDSucataDataSet bDSucataDataSet;
         private System.Windows.Forms.BindingSource tbClienteBindingSource;
         private BDSucataDataSetTableAdapters.tbClienteTableAdapter tbClienteTableAdapter;
-        private BDSucataDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox cdClienteTextBox;
         private System.Windows.Forms.TextBox nmClienteTextBox;
         private System.Windows.Forms.TextBox dsEnderecoTextBox;
         private System.Windows.Forms.TextBox nrNumeroTextBox;
         private System.Windows.Forms.TextBox nmBairroTextBox;
         private System.Windows.Forms.TextBox nmCidadeTextBox;
-        private System.Windows.Forms.TextBox sgEstadoTextBox;
         private System.Windows.Forms.MaskedTextBox cdCEPMaskedTextBox;
         private System.Windows.Forms.TextBox sgFIJUTextBox;
         private System.Windows.Forms.MaskedTextBox cdCPFMaskedTextBox;
@@ -784,5 +808,7 @@
         private System.Windows.Forms.Label label2;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private BDSucataDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ComboBox sgEstadoComboBox;
     }
 }

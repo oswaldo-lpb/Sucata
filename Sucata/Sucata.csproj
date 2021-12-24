@@ -90,17 +90,35 @@
     <Compile Include="frmComprador.Designer.cs">
       <DependentUpon>frmComprador.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCompradorPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompradorPesquisa.Designer.cs">
+      <DependentUpon>frmCompradorPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDespesa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDespesa.Designer.cs">
       <DependentUpon>frmDespesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDespesaPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDespesaPesquisa.Designer.cs">
+      <DependentUpon>frmDespesaPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFormasPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFormasPagamento.Designer.cs">
       <DependentUpon>frmFormasPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFormasPagamentoPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormasPagamentoPesquisa.Designer.cs">
+      <DependentUpon>frmFormasPagamentoPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFuncionario.cs">
       <SubType>Form</SubType>
@@ -131,6 +149,12 @@
     </Compile>
     <Compile Include="frmProduto.Designer.cs">
       <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProdutoPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProdutoPesquisa.Designer.cs">
+      <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUsuario.cs">
       <SubType>Form</SubType>
@@ -164,11 +188,20 @@
     <EmbeddedResource Include="frmComprador.resx">
       <DependentUpon>frmComprador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCompradorPesquisa.resx">
+      <DependentUpon>frmCompradorPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDespesa.resx">
       <DependentUpon>frmDespesa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDespesaPesquisa.resx">
+      <DependentUpon>frmDespesaPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFormasPagamento.resx">
       <DependentUpon>frmFormasPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormasPagamentoPesquisa.resx">
+      <DependentUpon>frmFormasPagamentoPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFuncionario.resx">
       <DependentUpon>frmFuncionario.cs</DependentUpon>
@@ -184,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProdutoPesquisa.resx">
+      <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -236,6 +272,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>BDSucata.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Dinheiro2.bmp" />
     <None Include="Resources\Logo.jpeg" />
     <None Include="Resources\Fundo.png" />
     <None Include="Resources\pesquisar.bmp" />

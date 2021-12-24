@@ -23,3 +23,7 @@ C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmFormasPagamento.resources
 C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmProduto.resources
 C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmVenda.resources
 C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmClientePesquisa.resources
+C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmCompradorPesquisa.resources
+C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmFormasPagamentoPesquisa.resources
+C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmProdutoPesquisa.resources
+C:\D\Programa\Sucata\Sucata\obj\Debug\Sucata.frmDespesaPesquisa.resources

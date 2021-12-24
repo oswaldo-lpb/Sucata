@@ -19,13 +19,9 @@ namespace Sucata
             nrNumeroTextBox.Enabled = true;
             nmBairroTextBox.Enabled = true;
             nmCidadeTextBox.Enabled = true;
-            sgEstadoTextBox.Enabled = true;
+            sgEstadoComboBox.Enabled = true;
             cdCEPMaskedTextBox.Enabled = true;
             sgFIJUTextBox.Enabled = true;
-//            cdCPFMaskedTextBox.Enabled = true;
-//            cdRGTextBox.Enabled = true;
-//            cdCNPJMaskedTextBox.Enabled = true;
-//            cdIEMaskedTextBox.Enabled = true;
             dsTelefoneTextBox.Enabled = true;
             vlSaldoTextBox.Enabled = true;
             btnAnterior.Enabled = false;
@@ -47,7 +43,7 @@ namespace Sucata
             nrNumeroTextBox.Enabled = false;
             nmBairroTextBox.Enabled = false;
             nmCidadeTextBox.Enabled = false;
-            sgEstadoTextBox.Enabled = false;
+            sgEstadoComboBox.Enabled = false;
             cdCEPMaskedTextBox.Enabled = false;
             sgFIJUTextBox.Enabled = false;
             cdCPFMaskedTextBox.Enabled = false;
@@ -71,14 +67,53 @@ namespace Sucata
         private bool VerificaCPF(string cpf)
         {
             bool resp = false;
-
+            int a, b, c, d, e, f, g, h, i, j, k, jj, kk, soma = 0;
+            a = int.Parse(cpf.Substring(0, 1));
+            b = int.Parse(cpf.Substring(1, 1));
+            c = int.Parse(cpf.Substring(2, 1));
+            d = int.Parse(cpf.Substring(4, 1));
+            e = int.Parse(cpf.Substring(5, 1));
+            f = int.Parse(cpf.Substring(6, 1));
+            g = int.Parse(cpf.Substring(8, 1));
+            h = int.Parse(cpf.Substring(9, 1));
+            i = int.Parse(cpf.Substring(10, 1));
+            j = int.Parse(cpf.Substring(12, 1));
+            k = int.Parse(cpf.Substring(13, 1));
+            soma = (a * 10) + (b * 9) + (c * 8) + (d * 7) + (e * 6) + (f * 5) + (g * 4) + (h * 3) + (i * 2);
+            jj = 11 - soma % 11;
+            jj = jj > 9 ? 0 : jj;
+            soma = (a * 11) + (b * 10) + (c * 9) + (d * 8) + (e * 7) + (f * 6) + (g * 5) + (h * 4) + (i * 3) + (j * 2);
+            kk = 11 - soma % 11;
+            kk = kk > 9 ? 0 : kk;
+            resp = (j == jj && k == kk);
             return resp;
         }
 
         private bool VerificaCNPJ(string cnpj)
         {
             bool resp = false;
-
+            int a, b, c, d, e, f, g, h, i, j, k, l, m, n, mm, nn, soma;
+            a = int.Parse(cnpj.Substring(0, 1));
+            b = int.Parse(cnpj.Substring(1, 1));
+            c = int.Parse(cnpj.Substring(3, 1));
+            d = int.Parse(cnpj.Substring(4, 1));
+            e = int.Parse(cnpj.Substring(5, 1));
+            f = int.Parse(cnpj.Substring(7, 1));
+            g = int.Parse(cnpj.Substring(8, 1));
+            h = int.Parse(cnpj.Substring(9, 1));
+            i = int.Parse(cnpj.Substring(11, 1));
+            j = int.Parse(cnpj.Substring(12, 1));
+            k = int.Parse(cnpj.Substring(13, 1));
+            l = int.Parse(cnpj.Substring(14, 1));
+            m = int.Parse(cnpj.Substring(16, 1));
+            n = int.Parse(cnpj.Substring(17, 1));
+            soma = (a * 5) + (b * 4) + (c * 3) + (d * 2) + (e * 9) + (f * 8) + (g * 7) + (h * 6) + (i * 5) + (j * 4) + (k * 3) + (l * 2);
+            mm = 11 - soma % 11;
+            mm = mm > 9 ? 0 : mm;
+            soma = (a * 6) + (b * 5) + (c * 4) + (d * 3) + (e * 2) + (f * 9) + (g * 8) + (h * 7) + (i * 6) + (j * 5) + (k * 4) + (l * 3) + (m * 2);
+            nn = 11 - soma % 11;
+            nn = nn > 9 ? 0 : nn;
+            resp = m == mm && n == nn;
             return resp;
         }
 
@@ -130,7 +165,7 @@ namespace Sucata
         {
             if (tbClienteBindingSource.Count > 0)
             {
-                if (MessageBox.Show("Confirma exclusão?", "Excluir Funcionário", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Confirma exclusão?", "Excluir Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     tbClienteBindingSource.RemoveCurrent();
                     Validate();
@@ -151,7 +186,8 @@ namespace Sucata
                 MessageBox.Show("CNPJ inválido!!!");
                 cdCNPJMaskedTextBox.Focus();
             }
-            else {
+            else
+            {
                 Validate();
                 tbClienteBindingSource.EndEdit();
                 tbClienteTableAdapter.Update(bDSucataDataSet.tbCliente);
@@ -186,7 +222,7 @@ namespace Sucata
 
         private void vlSaldoTextBox_TextChanged(object sender, EventArgs e)
         {
-            //Verifica se tem 4 decimais e passa para 2 decimais
+            //Verifica se decimais é diferente de 2 e passa para 2 decimais
             if (vlSaldoTextBox.Text.Length - 5 == vlSaldoTextBox.Text.IndexOf(','))
             {
                 vlSaldoTextBox.Text = string.Format("{0:N2}", Convert.ToDouble(vlSaldoTextBox.Text));
@@ -216,10 +252,15 @@ namespace Sucata
                 ((TextBox)sender).ForeColor = Color.White;
                 ((TextBox)sender).BackColor = Color.Blue;
             }
-            else
+            else if (sender is MaskedTextBox)
             {
                 ((MaskedTextBox)sender).ForeColor = Color.White;
                 ((MaskedTextBox)sender).BackColor = Color.Blue;
+            }
+            else
+            {
+                ((ComboBox)sender).ForeColor = Color.White;
+                ((ComboBox)sender).BackColor = Color.Blue;
             }
         }
 
@@ -230,10 +271,15 @@ namespace Sucata
                 ((TextBox)sender).ForeColor = Color.Black;
                 ((TextBox)sender).BackColor = Color.White;
             }
-            else
+            else if (sender is MaskedTextBox)
             {
                 ((MaskedTextBox)sender).ForeColor = Color.Black;
                 ((MaskedTextBox)sender).BackColor = Color.White;
+            }
+            else
+            {
+                ((ComboBox)sender).ForeColor = Color.Black;
+                ((ComboBox)sender).BackColor = Color.White;
             }
         }
 
@@ -260,7 +306,7 @@ namespace Sucata
                 btnSalvar.Focus();
                 btnSalvar_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.F8 && btnSalvar.Enabled)
+            else if (e.KeyCode == Keys.F8 && btnCancelar.Enabled)
             {
                 btnCancelar.Focus();
                 btnCancelar_Click(sender, e);
@@ -281,7 +327,7 @@ namespace Sucata
             strDados = strDados + "Endereço: " + dsEnderecoTextBox.Text + ", " + nrNumeroTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "Bairro: " + nmBairroTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "Cidade: " + nmCidadeTextBox.Text + (char)10 + (char)10;
-            strDados = strDados + "Estado: " + sgEstadoTextBox.Text + (char)10 + (char)10;
+            strDados = strDados + "Estado: " + sgEstadoComboBox.Text + (char)10 + (char)10;
             strDados = strDados + "CEP: " + cdCEPMaskedTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "Física/Jurídica: " + sgFIJUTextBox.Text + (char)10 + (char)10;
             if (sgFIJUTextBox.Text == "F") {

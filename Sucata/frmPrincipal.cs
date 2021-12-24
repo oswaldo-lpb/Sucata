@@ -75,5 +75,10 @@ namespace Sucata
             frmDespesa fd = new frmDespesa();
             fd.ShowDialog();
         }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            lblData.Text = "Data: " + DateTime.Now.ToString("dd/MM/yyyy");
+        }
     }
 }

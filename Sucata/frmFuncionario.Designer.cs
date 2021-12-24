@@ -62,7 +62,6 @@
             this.nrNumeroTextBox = new System.Windows.Forms.TextBox();
             this.nmBairroTextBox = new System.Windows.Forms.TextBox();
             this.nmCidadeTextBox = new System.Windows.Forms.TextBox();
-            this.sgEstadoTextBox = new System.Windows.Forms.TextBox();
             this.cdRGTextBox = new System.Windows.Forms.TextBox();
             this.dsTelefoneTextBox = new System.Windows.Forms.TextBox();
             this.cdCEPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -70,6 +69,7 @@
             this.vlSaldoTextBox = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.sgEstadoComboBox = new System.Windows.Forms.ComboBox();
             cdFuncionarioLabel = new System.Windows.Forms.Label();
             nmFuncionarioLabel = new System.Windows.Forms.Label();
             dsEnderecoLabel = new System.Windows.Forms.Label();
@@ -193,9 +193,9 @@
             vlSaldoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             vlSaldoLabel.Location = new System.Drawing.Point(69, 311);
             vlSaldoLabel.Name = "vlSaldoLabel";
-            vlSaldoLabel.Size = new System.Drawing.Size(75, 20);
+            vlSaldoLabel.Size = new System.Drawing.Size(50, 20);
             vlSaldoLabel.TabIndex = 34;
-            vlSaldoLabel.Text = "Saldo R$";
+            vlSaldoLabel.Text = "Saldo";
             // 
             // dsTelefoneLabel
             // 
@@ -462,20 +462,6 @@
             this.nmCidadeTextBox.Enter += new System.EventHandler(this.nmFuncionarioTextBox_Enter);
             this.nmCidadeTextBox.Leave += new System.EventHandler(this.nmFuncionarioTextBox_Leave);
             // 
-            // sgEstadoTextBox
-            // 
-            this.sgEstadoTextBox.BackColor = System.Drawing.Color.White;
-            this.sgEstadoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFuncionarioBindingSource, "sgEstado", true));
-            this.sgEstadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgEstadoTextBox.ForeColor = System.Drawing.Color.Black;
-            this.sgEstadoTextBox.Location = new System.Drawing.Point(162, 200);
-            this.sgEstadoTextBox.MaxLength = 2;
-            this.sgEstadoTextBox.Name = "sgEstadoTextBox";
-            this.sgEstadoTextBox.Size = new System.Drawing.Size(34, 26);
-            this.sgEstadoTextBox.TabIndex = 27;
-            this.sgEstadoTextBox.Enter += new System.EventHandler(this.nmFuncionarioTextBox_Enter);
-            this.sgEstadoTextBox.Leave += new System.EventHandler(this.nmFuncionarioTextBox_Leave);
-            // 
             // cdRGTextBox
             // 
             this.cdRGTextBox.BackColor = System.Drawing.Color.White;
@@ -563,6 +549,47 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // sgEstadoComboBox
+            // 
+            this.sgEstadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFuncionarioBindingSource, "sgEstado", true));
+            this.sgEstadoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sgEstadoComboBox.FormattingEnabled = true;
+            this.sgEstadoComboBox.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.sgEstadoComboBox.Location = new System.Drawing.Point(162, 200);
+            this.sgEstadoComboBox.MaxLength = 2;
+            this.sgEstadoComboBox.Name = "sgEstadoComboBox";
+            this.sgEstadoComboBox.Size = new System.Drawing.Size(46, 28);
+            this.sgEstadoComboBox.TabIndex = 27;
+            this.sgEstadoComboBox.Enter += new System.EventHandler(this.nmFuncionarioTextBox_Enter);
+            this.sgEstadoComboBox.Leave += new System.EventHandler(this.nmFuncionarioTextBox_Leave);
+            // 
             // frmFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,6 +597,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(803, 499);
             this.ControlBox = false;
+            this.Controls.Add(this.sgEstadoComboBox);
             this.Controls.Add(this.vlSaldoTextBox);
             this.Controls.Add(this.cdCPFMaskedTextBox);
             this.Controls.Add(this.cdCEPMaskedTextBox);
@@ -586,7 +614,6 @@
             this.Controls.Add(nmCidadeLabel);
             this.Controls.Add(this.nmCidadeTextBox);
             this.Controls.Add(sgEstadoLabel);
-            this.Controls.Add(this.sgEstadoTextBox);
             this.Controls.Add(cdCEPLabel);
             this.Controls.Add(cdCPFLabel);
             this.Controls.Add(cdRGLabel);
@@ -633,7 +660,6 @@
         private System.Windows.Forms.TextBox nrNumeroTextBox;
         private System.Windows.Forms.TextBox nmBairroTextBox;
         private System.Windows.Forms.TextBox nmCidadeTextBox;
-        private System.Windows.Forms.TextBox sgEstadoTextBox;
         private System.Windows.Forms.TextBox cdRGTextBox;
         private System.Windows.Forms.TextBox dsTelefoneTextBox;
         private System.Windows.Forms.MaskedTextBox cdCEPMaskedTextBox;
@@ -641,5 +667,6 @@
         private System.Windows.Forms.TextBox vlSaldoTextBox;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ComboBox sgEstadoComboBox;
     }
 }

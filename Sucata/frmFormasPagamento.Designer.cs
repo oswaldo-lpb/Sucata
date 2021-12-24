@@ -32,6 +32,7 @@
             System.Windows.Forms.Label cdFormaPagLabel;
             System.Windows.Forms.Label nmFormaPagLabel;
             System.Windows.Forms.Label sgContaLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFormasPagamento));
             this.bDSucataDataSet = new Sucata.BDSucataDataSet();
             this.tbFormaPagBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbFormaPagTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbFormaPagTableAdapter();
@@ -49,6 +50,8 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             cdFormaPagLabel = new System.Windows.Forms.Label();
             nmFormaPagLabel = new System.Windows.Forms.Label();
             sgContaLabel = new System.Windows.Forms.Label();
@@ -81,7 +84,7 @@
             // 
             sgContaLabel.AutoSize = true;
             sgContaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sgContaLabel.Location = new System.Drawing.Point(592, 12);
+            sgContaLabel.Location = new System.Drawing.Point(607, 68);
             sgContaLabel.Name = "sgContaLabel";
             sgContaLabel.Size = new System.Drawing.Size(77, 20);
             sgContaLabel.TabIndex = 5;
@@ -106,6 +109,7 @@
             // 
             this.cdFormaPagTextBox.BackColor = System.Drawing.Color.White;
             this.cdFormaPagTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFormaPagBindingSource, "cdFormaPag", true));
+            this.cdFormaPagTextBox.Enabled = false;
             this.cdFormaPagTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdFormaPagTextBox.ForeColor = System.Drawing.Color.Black;
             this.cdFormaPagTextBox.Location = new System.Drawing.Point(306, 25);
@@ -120,9 +124,12 @@
             this.nmFormaPagTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmFormaPagTextBox.ForeColor = System.Drawing.Color.Black;
             this.nmFormaPagTextBox.Location = new System.Drawing.Point(306, 65);
+            this.nmFormaPagTextBox.MaxLength = 20;
             this.nmFormaPagTextBox.Name = "nmFormaPagTextBox";
             this.nmFormaPagTextBox.Size = new System.Drawing.Size(255, 26);
             this.nmFormaPagTextBox.TabIndex = 4;
+            this.nmFormaPagTextBox.Enter += new System.EventHandler(this.nmFormaPagTextBox_Enter);
+            this.nmFormaPagTextBox.Leave += new System.EventHandler(this.nmFormaPagTextBox_Leave);
             // 
             // sgContaTextBox
             // 
@@ -130,9 +137,10 @@
             this.sgContaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbFormaPagBindingSource, "sgConta", true));
             this.sgContaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgContaTextBox.ForeColor = System.Drawing.Color.Black;
-            this.sgContaTextBox.Location = new System.Drawing.Point(676, 9);
+            this.sgContaTextBox.Location = new System.Drawing.Point(691, 65);
+            this.sgContaTextBox.MaxLength = 1;
             this.sgContaTextBox.Name = "sgContaTextBox";
-            this.sgContaTextBox.Size = new System.Drawing.Size(100, 26);
+            this.sgContaTextBox.Size = new System.Drawing.Size(23, 26);
             this.sgContaTextBox.TabIndex = 6;
             this.sgContaTextBox.Visible = false;
             // 
@@ -181,6 +189,7 @@
             this.btnImprimir.Text = "F10 - Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnPesquisar
             // 
@@ -194,6 +203,7 @@
             this.btnPesquisar.Text = "F9 - Pequisar";
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -207,6 +217,7 @@
             this.btnCancelar.Text = "F8 - Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -220,6 +231,7 @@
             this.btnSalvar.Text = "F7 - Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -233,6 +245,7 @@
             this.btnExcluir.Text = "F6 - Excluir";
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -246,6 +259,7 @@
             this.btnAlterar.Text = "F5 - Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnNovo
             // 
@@ -259,6 +273,7 @@
             this.btnNovo.Text = "F4 - Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnProximo
             // 
@@ -272,6 +287,7 @@
             this.btnProximo.Text = "F3 - Próximo";
             this.btnProximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
             // btnAnterior
             // 
@@ -285,6 +301,22 @@
             this.btnAnterior.Text = "F2 - Anterior";
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // frmFormasPagamento
             // 
@@ -306,6 +338,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formas de Pagamento";
             this.Load += new System.EventHandler(this.frmFormasPagamento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFormasPagamento_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bDSucataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFormaPagBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -334,5 +367,7 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnProximo;
         private System.Windows.Forms.Button btnAnterior;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

@@ -45,6 +45,9 @@
             this.tbVendaItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbVendaItemTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbVendaItemTableAdapter();
             this.tbVendaItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbVendaPagBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbVendaPagTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbVendaPagTableAdapter();
             this.tbVendaPagDataGridView = new System.Windows.Forms.DataGridView();
@@ -62,9 +65,7 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPgto = new System.Windows.Forms.Button();
             cdVendaLabel = new System.Windows.Forms.Label();
             dtVendaLabel = new System.Windows.Forms.Label();
             cdCompradorLabel = new System.Windows.Forms.Label();
@@ -78,6 +79,61 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbVendaPagDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cdVendaLabel
+            // 
+            cdVendaLabel.AutoSize = true;
+            cdVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cdVendaLabel.Location = new System.Drawing.Point(74, 17);
+            cdVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            cdVendaLabel.Name = "cdVendaLabel";
+            cdVendaLabel.Size = new System.Drawing.Size(59, 20);
+            cdVendaLabel.TabIndex = 1;
+            cdVendaLabel.Text = "Código";
+            // 
+            // dtVendaLabel
+            // 
+            dtVendaLabel.AutoSize = true;
+            dtVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dtVendaLabel.Location = new System.Drawing.Point(74, 59);
+            dtVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            dtVendaLabel.Name = "dtVendaLabel";
+            dtVendaLabel.Size = new System.Drawing.Size(44, 20);
+            dtVendaLabel.TabIndex = 3;
+            dtVendaLabel.Text = "Data";
+            // 
+            // cdCompradorLabel
+            // 
+            cdCompradorLabel.AutoSize = true;
+            cdCompradorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cdCompradorLabel.Location = new System.Drawing.Point(74, 97);
+            cdCompradorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            cdCompradorLabel.Name = "cdCompradorLabel";
+            cdCompradorLabel.Size = new System.Drawing.Size(88, 20);
+            cdCompradorLabel.TabIndex = 5;
+            cdCompradorLabel.Text = "Comprador";
+            // 
+            // vlVendaLabel
+            // 
+            vlVendaLabel.AutoSize = true;
+            vlVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            vlVendaLabel.Location = new System.Drawing.Point(74, 137);
+            vlVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            vlVendaLabel.Name = "vlVendaLabel";
+            vlVendaLabel.Size = new System.Drawing.Size(46, 20);
+            vlVendaLabel.TabIndex = 7;
+            vlVendaLabel.Text = "Valor";
+            // 
+            // dtPagamentoLabel
+            // 
+            dtPagamentoLabel.AutoSize = true;
+            dtPagamentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dtPagamentoLabel.Location = new System.Drawing.Point(74, 179);
+            dtPagamentoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            dtPagamentoLabel.Name = "dtPagamentoLabel";
+            dtPagamentoLabel.Size = new System.Drawing.Size(91, 20);
+            dtPagamentoLabel.TabIndex = 9;
+            dtPagamentoLabel.Text = "Pagamento";
             // 
             // bDSucataDataSet
             // 
@@ -93,37 +149,16 @@
             // 
             this.tbVendaTableAdapter.ClearBeforeFill = true;
             // 
-            // cdVendaLabel
-            // 
-            cdVendaLabel.AutoSize = true;
-            cdVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cdVendaLabel.Location = new System.Drawing.Point(74, 17);
-            cdVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            cdVendaLabel.Name = "cdVendaLabel";
-            cdVendaLabel.Size = new System.Drawing.Size(59, 20);
-            cdVendaLabel.TabIndex = 1;
-            cdVendaLabel.Text = "Código";
-            // 
             // cdVendaTextBox
             // 
             this.cdVendaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbVendaBindingSource, "cdVenda", true));
+            this.cdVendaTextBox.Enabled = false;
             this.cdVendaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdVendaTextBox.Location = new System.Drawing.Point(170, 14);
             this.cdVendaTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cdVendaTextBox.Name = "cdVendaTextBox";
-            this.cdVendaTextBox.Size = new System.Drawing.Size(110, 26);
+            this.cdVendaTextBox.Size = new System.Drawing.Size(80, 26);
             this.cdVendaTextBox.TabIndex = 2;
-            // 
-            // dtVendaLabel
-            // 
-            dtVendaLabel.AutoSize = true;
-            dtVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dtVendaLabel.Location = new System.Drawing.Point(74, 59);
-            dtVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            dtVendaLabel.Name = "dtVendaLabel";
-            dtVendaLabel.Size = new System.Drawing.Size(44, 20);
-            dtVendaLabel.TabIndex = 3;
-            dtVendaLabel.Text = "Data";
             // 
             // dtVendaDateTimePicker
             // 
@@ -136,17 +171,6 @@
             this.dtVendaDateTimePicker.Size = new System.Drawing.Size(121, 26);
             this.dtVendaDateTimePicker.TabIndex = 4;
             // 
-            // cdCompradorLabel
-            // 
-            cdCompradorLabel.AutoSize = true;
-            cdCompradorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cdCompradorLabel.Location = new System.Drawing.Point(74, 97);
-            cdCompradorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            cdCompradorLabel.Name = "cdCompradorLabel";
-            cdCompradorLabel.Size = new System.Drawing.Size(88, 20);
-            cdCompradorLabel.TabIndex = 5;
-            cdCompradorLabel.Text = "Comprador";
-            // 
             // cdCompradorTextBox
             // 
             this.cdCompradorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbVendaBindingSource, "cdComprador", true));
@@ -157,17 +181,6 @@
             this.cdCompradorTextBox.Size = new System.Drawing.Size(455, 26);
             this.cdCompradorTextBox.TabIndex = 6;
             // 
-            // vlVendaLabel
-            // 
-            vlVendaLabel.AutoSize = true;
-            vlVendaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            vlVendaLabel.Location = new System.Drawing.Point(74, 137);
-            vlVendaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            vlVendaLabel.Name = "vlVendaLabel";
-            vlVendaLabel.Size = new System.Drawing.Size(46, 20);
-            vlVendaLabel.TabIndex = 7;
-            vlVendaLabel.Text = "Valor";
-            // 
             // vlVendaTextBox
             // 
             this.vlVendaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbVendaBindingSource, "vlVenda", true));
@@ -177,17 +190,6 @@
             this.vlVendaTextBox.Name = "vlVendaTextBox";
             this.vlVendaTextBox.Size = new System.Drawing.Size(202, 26);
             this.vlVendaTextBox.TabIndex = 8;
-            // 
-            // dtPagamentoLabel
-            // 
-            dtPagamentoLabel.AutoSize = true;
-            dtPagamentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dtPagamentoLabel.Location = new System.Drawing.Point(74, 179);
-            dtPagamentoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            dtPagamentoLabel.Name = "dtPagamentoLabel";
-            dtPagamentoLabel.Size = new System.Drawing.Size(91, 20);
-            dtPagamentoLabel.TabIndex = 9;
-            dtPagamentoLabel.Text = "Pagamento";
             // 
             // dtPagamentoDateTimePicker
             // 
@@ -226,6 +228,29 @@
             this.tbVendaItemDataGridView.ReadOnly = true;
             this.tbVendaItemDataGridView.Size = new System.Drawing.Size(764, 291);
             this.tbVendaItemDataGridView.TabIndex = 32;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "cdProduto";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Produto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 450;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "qtProduto";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Quantidade";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "vlProduto";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 120;
             // 
             // tbVendaPagBindingSource
             // 
@@ -279,6 +304,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnPgto);
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnPesquisar);
@@ -290,9 +316,9 @@
             this.panel1.Controls.Add(this.btnProximo);
             this.panel1.Controls.Add(this.btnAnterior);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 550);
+            this.panel1.Location = new System.Drawing.Point(0, 548);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(896, 142);
+            this.panel1.Size = new System.Drawing.Size(900, 144);
             this.panel1.TabIndex = 33;
             // 
             // btnSair
@@ -426,35 +452,26 @@
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnterior.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // btnPgto
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "cdProduto";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Produto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 450;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "qtProduto";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "vlProduto";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 120;
+            this.btnPgto.AutoSize = true;
+            this.btnPgto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPgto.Image = global::Sucata.Properties.Resources.Dinheiro2;
+            this.btnPgto.Location = new System.Drawing.Point(800, 0);
+            this.btnPgto.Name = "btnPgto";
+            this.btnPgto.Size = new System.Drawing.Size(96, 140);
+            this.btnPgto.TabIndex = 28;
+            this.btnPgto.Text = "F11 - Pgto";
+            this.btnPgto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPgto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPgto.UseVisualStyleBackColor = true;
             // 
             // frmVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.ClientSize = new System.Drawing.Size(896, 692);
+            this.ClientSize = new System.Drawing.Size(900, 692);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbVendaPagDataGridView);
@@ -523,5 +540,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnPgto;
     }
 }

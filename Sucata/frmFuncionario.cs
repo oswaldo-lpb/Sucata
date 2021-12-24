@@ -19,7 +19,7 @@ namespace Sucata
             nrNumeroTextBox.Enabled = true;
             nmBairroTextBox.Enabled = true;
             nmCidadeTextBox.Enabled = true;
-            sgEstadoTextBox.Enabled = true;
+            sgEstadoComboBox.Enabled = true;
             cdCEPMaskedTextBox.Enabled = true;
             cdCPFMaskedTextBox.Enabled = true;
             cdRGTextBox.Enabled = true;
@@ -44,7 +44,7 @@ namespace Sucata
             nrNumeroTextBox.Enabled = false;
             nmBairroTextBox.Enabled = false;
             nmCidadeTextBox.Enabled = false;
-            sgEstadoTextBox.Enabled = false;
+            sgEstadoComboBox.Enabled = false;
             cdCEPMaskedTextBox.Enabled = false;
             cdCPFMaskedTextBox.Enabled = false;
             cdRGTextBox.Enabled = false;
@@ -154,8 +154,8 @@ namespace Sucata
 
         private void vlSaldoTextBox_TextChanged(object sender, EventArgs e)
         {
-            //Verifica se tem 4 decimais e passa para 2 decimais
-            if (vlSaldoTextBox.Text.Length-5==vlSaldoTextBox.Text.IndexOf(','))
+            //Verifica se decimais é diferente de 2 e passa para 2 decimais
+            if (vlSaldoTextBox.Text.Length - 5 == vlSaldoTextBox.Text.IndexOf(','))
             {
                 vlSaldoTextBox.Text = string.Format("{0:N2}", Convert.ToDouble(vlSaldoTextBox.Text));
             }
@@ -183,10 +183,15 @@ namespace Sucata
                 ((TextBox)sender).ForeColor = Color.White;
                 ((TextBox)sender).BackColor = Color.Blue;
             }
-            else
+            else if (sender is MaskedTextBox)
             {
                 ((MaskedTextBox)sender).ForeColor = Color.White;
                 ((MaskedTextBox)sender).BackColor = Color.Blue;
+            }
+            else
+            {
+                ((ComboBox)sender).ForeColor = Color.White;
+                ((ComboBox)sender).BackColor = Color.Blue;
             }
         }
 
@@ -197,10 +202,15 @@ namespace Sucata
                 ((TextBox)sender).ForeColor = Color.Black;
                 ((TextBox)sender).BackColor = Color.White;
             }
-            else
+            else if (sender is MaskedTextBox)
             {
                 ((MaskedTextBox)sender).ForeColor = Color.Black;
                 ((MaskedTextBox)sender).BackColor = Color.White;
+            }
+            else
+            {
+                ((ComboBox)sender).ForeColor = Color.Black;
+                ((ComboBox)sender).BackColor = Color.White;
             }
         }
 
@@ -248,7 +258,7 @@ namespace Sucata
             strDados = strDados + "Endereço: " + dsEnderecoTextBox.Text + ", " + nrNumeroTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "Bairro: " + nmBairroTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "Cidade: " + nmCidadeTextBox.Text + (char)10 + (char)10;
-            strDados = strDados + "Estado: " + sgEstadoTextBox.Text + (char)10 + (char)10;
+            strDados = strDados + "Estado: " + sgEstadoComboBox.Text + (char)10 + (char)10;
             strDados = strDados + "CEP: " + cdCEPMaskedTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "CPF: " + cdCPFMaskedTextBox.Text + (char)10 + (char)10;
             strDados = strDados + "RG: " + cdRGTextBox.Text + (char)10 + (char)10;

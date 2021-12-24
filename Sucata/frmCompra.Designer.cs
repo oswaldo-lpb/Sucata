@@ -38,10 +38,7 @@
             this.tbCompraBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbCompraTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbCompraTableAdapter();
             this.cdCompraTextBox = new System.Windows.Forms.TextBox();
-            this.dtCompraDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.cdClienteTextBox = new System.Windows.Forms.TextBox();
             this.vlCompraTextBox = new System.Windows.Forms.TextBox();
-            this.dtPagamentoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tbCompraItemTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbCompraItemTableAdapter();
             this.tbCompraItemDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +52,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCompraPagBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPgto = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
@@ -65,6 +63,12 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.cdClienteTextBox = new System.Windows.Forms.TextBox();
+            this.tbClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbClienteTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbClienteTableAdapter();
+            this.nmClienteComboBox = new System.Windows.Forms.ComboBox();
             cdCompraLabel = new System.Windows.Forms.Label();
             dtCompraLabel = new System.Windows.Forms.Label();
             cdClienteLabel = new System.Windows.Forms.Label();
@@ -77,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbCompraPagDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCompraPagBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbClienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cdCompraLabel
@@ -147,6 +152,7 @@
             // 
             this.cdCompraTextBox.BackColor = System.Drawing.Color.White;
             this.cdCompraTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompraBindingSource, "cdCompra", true));
+            this.cdCompraTextBox.Enabled = false;
             this.cdCompraTextBox.ForeColor = System.Drawing.Color.Black;
             this.cdCompraTextBox.Location = new System.Drawing.Point(214, 14);
             this.cdCompraTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -154,51 +160,17 @@
             this.cdCompraTextBox.Size = new System.Drawing.Size(80, 26);
             this.cdCompraTextBox.TabIndex = 2;
             // 
-            // dtCompraDateTimePicker
-            // 
-            this.dtCompraDateTimePicker.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtCompraDateTimePicker.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dtCompraDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tbCompraBindingSource, "dtCompra", true));
-            this.dtCompraDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtCompraDateTimePicker.Location = new System.Drawing.Point(214, 54);
-            this.dtCompraDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtCompraDateTimePicker.Name = "dtCompraDateTimePicker";
-            this.dtCompraDateTimePicker.Size = new System.Drawing.Size(119, 26);
-            this.dtCompraDateTimePicker.TabIndex = 4;
-            // 
-            // cdClienteTextBox
-            // 
-            this.cdClienteTextBox.BackColor = System.Drawing.Color.White;
-            this.cdClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompraBindingSource, "cdCliente", true));
-            this.cdClienteTextBox.ForeColor = System.Drawing.Color.Black;
-            this.cdClienteTextBox.Location = new System.Drawing.Point(214, 94);
-            this.cdClienteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cdClienteTextBox.Name = "cdClienteTextBox";
-            this.cdClienteTextBox.Size = new System.Drawing.Size(455, 26);
-            this.cdClienteTextBox.TabIndex = 6;
-            // 
             // vlCompraTextBox
             // 
             this.vlCompraTextBox.BackColor = System.Drawing.Color.White;
             this.vlCompraTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompraBindingSource, "vlCompra", true));
+            this.vlCompraTextBox.Enabled = false;
             this.vlCompraTextBox.ForeColor = System.Drawing.Color.Black;
             this.vlCompraTextBox.Location = new System.Drawing.Point(214, 134);
             this.vlCompraTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.vlCompraTextBox.Name = "vlCompraTextBox";
             this.vlCompraTextBox.Size = new System.Drawing.Size(146, 26);
             this.vlCompraTextBox.TabIndex = 8;
-            // 
-            // dtPagamentoDateTimePicker
-            // 
-            this.dtPagamentoDateTimePicker.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtPagamentoDateTimePicker.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dtPagamentoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tbCompraBindingSource, "dtPagamento", true));
-            this.dtPagamentoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPagamentoDateTimePicker.Location = new System.Drawing.Point(214, 174);
-            this.dtPagamentoDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtPagamentoDateTimePicker.Name = "dtPagamentoDateTimePicker";
-            this.dtPagamentoDateTimePicker.Size = new System.Drawing.Size(119, 26);
-            this.dtPagamentoDateTimePicker.TabIndex = 10;
             // 
             // tbCompraItemTableAdapter
             // 
@@ -302,6 +274,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnPgto);
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnPesquisar);
@@ -313,10 +286,25 @@
             this.panel1.Controls.Add(this.btnProximo);
             this.panel1.Controls.Add(this.btnAnterior);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 550);
+            this.panel1.Location = new System.Drawing.Point(0, 548);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(900, 142);
+            this.panel1.Size = new System.Drawing.Size(900, 144);
             this.panel1.TabIndex = 14;
+            // 
+            // btnPgto
+            // 
+            this.btnPgto.AutoSize = true;
+            this.btnPgto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPgto.Image = global::Sucata.Properties.Resources.Dinheiro2;
+            this.btnPgto.Location = new System.Drawing.Point(800, 0);
+            this.btnPgto.Name = "btnPgto";
+            this.btnPgto.Size = new System.Drawing.Size(96, 140);
+            this.btnPgto.TabIndex = 28;
+            this.btnPgto.Text = "F11 - Pgto";
+            this.btnPgto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPgto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPgto.UseVisualStyleBackColor = true;
+            this.btnPgto.Click += new System.EventHandler(this.btnPgto_Click);
             // 
             // btnSair
             // 
@@ -328,6 +316,7 @@
             this.btnSair.Size = new System.Drawing.Size(160, 70);
             this.btnSair.TabIndex = 21;
             this.btnSair.Text = "Esc - Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -342,8 +331,10 @@
             this.btnImprimir.Size = new System.Drawing.Size(160, 70);
             this.btnImprimir.TabIndex = 20;
             this.btnImprimir.Text = "F10 - Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnPesquisar
             // 
@@ -355,8 +346,10 @@
             this.btnPesquisar.Size = new System.Drawing.Size(160, 70);
             this.btnPesquisar.TabIndex = 19;
             this.btnPesquisar.Text = "F9 - Pequisar";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -368,8 +361,10 @@
             this.btnCancelar.Size = new System.Drawing.Size(160, 70);
             this.btnCancelar.TabIndex = 18;
             this.btnCancelar.Text = "F8 - Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -381,8 +376,10 @@
             this.btnSalvar.Size = new System.Drawing.Size(160, 70);
             this.btnSalvar.TabIndex = 17;
             this.btnSalvar.Text = "F7 - Salvar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -394,8 +391,10 @@
             this.btnExcluir.Size = new System.Drawing.Size(160, 70);
             this.btnExcluir.TabIndex = 16;
             this.btnExcluir.Text = "F6 - Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -407,8 +406,10 @@
             this.btnAlterar.Size = new System.Drawing.Size(160, 70);
             this.btnAlterar.TabIndex = 15;
             this.btnAlterar.Text = "F5 - Alterar";
+            this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnNovo
             // 
@@ -420,8 +421,10 @@
             this.btnNovo.Size = new System.Drawing.Size(160, 70);
             this.btnNovo.TabIndex = 14;
             this.btnNovo.Text = "F4 - Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnProximo
             // 
@@ -433,8 +436,10 @@
             this.btnProximo.Size = new System.Drawing.Size(160, 70);
             this.btnProximo.TabIndex = 13;
             this.btnProximo.Text = "F3 - Próximo";
+            this.btnProximo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
             // btnAnterior
             // 
@@ -446,8 +451,61 @@
             this.btnAnterior.Size = new System.Drawing.Size(160, 70);
             this.btnAnterior.TabIndex = 12;
             this.btnAnterior.Text = "F2 - Anterior";
+            this.btnAnterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Enabled = false;
+            this.maskedTextBox1.Location = new System.Drawing.Point(214, 54);
+            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(80, 26);
+            this.maskedTextBox1.TabIndex = 4;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Enabled = false;
+            this.maskedTextBox2.Location = new System.Drawing.Point(214, 174);
+            this.maskedTextBox2.Mask = "00/00/0000";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(80, 26);
+            this.maskedTextBox2.TabIndex = 10;
+            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            // 
+            // cdClienteTextBox
+            // 
+            this.cdClienteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompraBindingSource, "cdCliente", true));
+            this.cdClienteTextBox.Location = new System.Drawing.Point(214, 95);
+            this.cdClienteTextBox.Name = "cdClienteTextBox";
+            this.cdClienteTextBox.Size = new System.Drawing.Size(80, 26);
+            this.cdClienteTextBox.TabIndex = 16;
+            this.cdClienteTextBox.TextChanged += new System.EventHandler(this.cdClienteTextBox_TextChanged);
+            // 
+            // tbClienteBindingSource
+            // 
+            this.tbClienteBindingSource.DataMember = "tbCliente";
+            this.tbClienteBindingSource.DataSource = this.bDSucataDataSet;
+            // 
+            // tbClienteTableAdapter
+            // 
+            this.tbClienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // nmClienteComboBox
+            // 
+            this.nmClienteComboBox.DataSource = this.tbClienteBindingSource;
+            this.nmClienteComboBox.DisplayMember = "nmCliente";
+            this.nmClienteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nmClienteComboBox.FormattingEnabled = true;
+            this.nmClienteComboBox.Location = new System.Drawing.Point(300, 95);
+            this.nmClienteComboBox.Name = "nmClienteComboBox";
+            this.nmClienteComboBox.Size = new System.Drawing.Size(542, 28);
+            this.nmClienteComboBox.TabIndex = 17;
+            this.nmClienteComboBox.ValueMember = "cdCliente";
+            this.nmClienteComboBox.SelectedIndexChanged += new System.EventHandler(this.nmClienteComboBox_SelectedIndexChanged);
             // 
             // frmCompra
             // 
@@ -456,19 +514,20 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(900, 692);
             this.ControlBox = false;
+            this.Controls.Add(this.nmClienteComboBox);
+            this.Controls.Add(this.cdClienteTextBox);
+            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbCompraPagDataGridView);
             this.Controls.Add(this.tbCompraItemDataGridView);
             this.Controls.Add(cdCompraLabel);
             this.Controls.Add(this.cdCompraTextBox);
             this.Controls.Add(dtCompraLabel);
-            this.Controls.Add(this.dtCompraDateTimePicker);
             this.Controls.Add(cdClienteLabel);
-            this.Controls.Add(this.cdClienteTextBox);
             this.Controls.Add(vlCompraLabel);
             this.Controls.Add(this.vlCompraTextBox);
             this.Controls.Add(dtPagamentoLabel);
-            this.Controls.Add(this.dtPagamentoDateTimePicker);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
@@ -485,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbCompraPagBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbClienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,10 +556,7 @@
         private System.Windows.Forms.BindingSource tbCompraBindingSource;
         private BDSucataDataSetTableAdapters.tbCompraTableAdapter tbCompraTableAdapter;
         private System.Windows.Forms.TextBox cdCompraTextBox;
-        private System.Windows.Forms.DateTimePicker dtCompraDateTimePicker;
-        private System.Windows.Forms.TextBox cdClienteTextBox;
         private System.Windows.Forms.TextBox vlCompraTextBox;
-        private System.Windows.Forms.DateTimePicker dtPagamentoDateTimePicker;
         private System.Windows.Forms.BindingSource tbCompraItemBindingSource;
         private BDSucataDataSetTableAdapters.tbCompraItemTableAdapter tbCompraItemTableAdapter;
         private System.Windows.Forms.DataGridView tbCompraItemDataGridView;
@@ -523,5 +580,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Button btnPgto;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.TextBox cdClienteTextBox;
+        private BDSucataDataSetTableAdapters.tbClienteTableAdapter tbClienteTableAdapter;
+        private System.Windows.Forms.BindingSource tbClienteBindingSource;
+        private System.Windows.Forms.ComboBox nmClienteComboBox;
     }
 }

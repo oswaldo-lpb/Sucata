@@ -37,24 +37,23 @@
             System.Windows.Forms.Label nmCidadeLabel;
             System.Windows.Forms.Label sgEstadoLabel;
             System.Windows.Forms.Label cdCEPLabel;
-            System.Windows.Forms.Label sgFIJULabel;
             System.Windows.Forms.Label cdCPFLabel;
             System.Windows.Forms.Label cdRGLabel;
             System.Windows.Forms.Label cdCNPJLabel;
             System.Windows.Forms.Label cdIELabel;
             System.Windows.Forms.Label vlSaldoLabel;
             System.Windows.Forms.Label dsTelefoneLabel;
+            System.Windows.Forms.Label sgFIJULabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComprador));
             this.bDSucataDataSet = new Sucata.BDSucataDataSet();
             this.tbCompradorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbCompradorTableAdapter = new Sucata.BDSucataDataSetTableAdapters.tbCompradorTableAdapter();
-            this.tableAdapterManager = new Sucata.BDSucataDataSetTableAdapters.TableAdapterManager();
             this.cdCompradorTextBox = new System.Windows.Forms.TextBox();
             this.nmCompradorTextBox = new System.Windows.Forms.TextBox();
             this.dsEnderecoTextBox = new System.Windows.Forms.TextBox();
             this.nrNumeroTextBox = new System.Windows.Forms.TextBox();
             this.nmBairroTextBox = new System.Windows.Forms.TextBox();
             this.nmCidadeTextBox = new System.Windows.Forms.TextBox();
-            this.sgEstadoTextBox = new System.Windows.Forms.TextBox();
             this.cdCEPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.sgFIJUTextBox = new System.Windows.Forms.TextBox();
             this.cdCPFMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -74,6 +73,11 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnProximo = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.sgEstadoComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             cdCompradorLabel = new System.Windows.Forms.Label();
             nmCompradorLabel = new System.Windows.Forms.Label();
             dsEnderecoLabel = new System.Windows.Forms.Label();
@@ -82,13 +86,13 @@
             nmCidadeLabel = new System.Windows.Forms.Label();
             sgEstadoLabel = new System.Windows.Forms.Label();
             cdCEPLabel = new System.Windows.Forms.Label();
-            sgFIJULabel = new System.Windows.Forms.Label();
             cdCPFLabel = new System.Windows.Forms.Label();
             cdRGLabel = new System.Windows.Forms.Label();
             cdCNPJLabel = new System.Windows.Forms.Label();
             cdIELabel = new System.Windows.Forms.Label();
             vlSaldoLabel = new System.Windows.Forms.Label();
             dsTelefoneLabel = new System.Windows.Forms.Label();
+            sgFIJULabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bDSucataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCompradorBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -98,7 +102,7 @@
             // 
             cdCompradorLabel.AutoSize = true;
             cdCompradorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cdCompradorLabel.Location = new System.Drawing.Point(63, 15);
+            cdCompradorLabel.Location = new System.Drawing.Point(52, 15);
             cdCompradorLabel.Name = "cdCompradorLabel";
             cdCompradorLabel.Size = new System.Drawing.Size(59, 20);
             cdCompradorLabel.TabIndex = 1;
@@ -108,7 +112,7 @@
             // 
             nmCompradorLabel.AutoSize = true;
             nmCompradorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nmCompradorLabel.Location = new System.Drawing.Point(63, 48);
+            nmCompradorLabel.Location = new System.Drawing.Point(52, 48);
             nmCompradorLabel.Name = "nmCompradorLabel";
             nmCompradorLabel.Size = new System.Drawing.Size(51, 20);
             nmCompradorLabel.TabIndex = 3;
@@ -118,7 +122,7 @@
             // 
             dsEnderecoLabel.AutoSize = true;
             dsEnderecoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dsEnderecoLabel.Location = new System.Drawing.Point(63, 81);
+            dsEnderecoLabel.Location = new System.Drawing.Point(52, 81);
             dsEnderecoLabel.Name = "dsEnderecoLabel";
             dsEnderecoLabel.Size = new System.Drawing.Size(78, 20);
             dsEnderecoLabel.TabIndex = 5;
@@ -128,7 +132,7 @@
             // 
             nrNumeroLabel.AutoSize = true;
             nrNumeroLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nrNumeroLabel.Location = new System.Drawing.Point(571, 89);
+            nrNumeroLabel.Location = new System.Drawing.Point(571, 81);
             nrNumeroLabel.Name = "nrNumeroLabel";
             nrNumeroLabel.Size = new System.Drawing.Size(65, 20);
             nrNumeroLabel.TabIndex = 7;
@@ -138,7 +142,7 @@
             // 
             nmBairroLabel.AutoSize = true;
             nmBairroLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nmBairroLabel.Location = new System.Drawing.Point(63, 114);
+            nmBairroLabel.Location = new System.Drawing.Point(52, 114);
             nmBairroLabel.Name = "nmBairroLabel";
             nmBairroLabel.Size = new System.Drawing.Size(51, 20);
             nmBairroLabel.TabIndex = 9;
@@ -148,7 +152,7 @@
             // 
             nmCidadeLabel.AutoSize = true;
             nmCidadeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nmCidadeLabel.Location = new System.Drawing.Point(63, 147);
+            nmCidadeLabel.Location = new System.Drawing.Point(52, 147);
             nmCidadeLabel.Name = "nmCidadeLabel";
             nmCidadeLabel.Size = new System.Drawing.Size(59, 20);
             nmCidadeLabel.TabIndex = 11;
@@ -158,7 +162,7 @@
             // 
             sgEstadoLabel.AutoSize = true;
             sgEstadoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sgEstadoLabel.Location = new System.Drawing.Point(63, 180);
+            sgEstadoLabel.Location = new System.Drawing.Point(52, 180);
             sgEstadoLabel.Name = "sgEstadoLabel";
             sgEstadoLabel.Size = new System.Drawing.Size(60, 20);
             sgEstadoLabel.TabIndex = 13;
@@ -173,16 +177,6 @@
             cdCEPLabel.Size = new System.Drawing.Size(41, 20);
             cdCEPLabel.TabIndex = 15;
             cdCEPLabel.Text = "CEP";
-            // 
-            // sgFIJULabel
-            // 
-            sgFIJULabel.AutoSize = true;
-            sgFIJULabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sgFIJULabel.Location = new System.Drawing.Point(63, 213);
-            sgFIJULabel.Name = "sgFIJULabel";
-            sgFIJULabel.Size = new System.Drawing.Size(108, 20);
-            sgFIJULabel.TabIndex = 17;
-            sgFIJULabel.Text = "Física/Jurídica";
             // 
             // cdCPFLabel
             // 
@@ -228,21 +222,31 @@
             // 
             vlSaldoLabel.AutoSize = true;
             vlSaldoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            vlSaldoLabel.Location = new System.Drawing.Point(561, 279);
+            vlSaldoLabel.Location = new System.Drawing.Point(586, 279);
             vlSaldoLabel.Name = "vlSaldoLabel";
-            vlSaldoLabel.Size = new System.Drawing.Size(75, 20);
+            vlSaldoLabel.Size = new System.Drawing.Size(50, 20);
             vlSaldoLabel.TabIndex = 27;
-            vlSaldoLabel.Text = "Saldo R$";
+            vlSaldoLabel.Text = "Saldo";
             // 
             // dsTelefoneLabel
             // 
             dsTelefoneLabel.AutoSize = true;
             dsTelefoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dsTelefoneLabel.Location = new System.Drawing.Point(63, 279);
+            dsTelefoneLabel.Location = new System.Drawing.Point(52, 279);
             dsTelefoneLabel.Name = "dsTelefoneLabel";
             dsTelefoneLabel.Size = new System.Drawing.Size(71, 20);
             dsTelefoneLabel.TabIndex = 29;
             dsTelefoneLabel.Text = "Telefone";
+            // 
+            // sgFIJULabel
+            // 
+            sgFIJULabel.AutoSize = true;
+            sgFIJULabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            sgFIJULabel.Location = new System.Drawing.Point(52, 213);
+            sgFIJULabel.Name = "sgFIJULabel";
+            sgFIJULabel.Size = new System.Drawing.Size(116, 20);
+            sgFIJULabel.TabIndex = 34;
+            sgFIJULabel.Text = "Física / Jurídica";
             // 
             // bDSucataDataSet
             // 
@@ -257,26 +261,6 @@
             // tbCompradorTableAdapter
             // 
             this.tbCompradorTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.tbClienteTableAdapter = null;
-            this.tableAdapterManager.tbCompradorTableAdapter = this.tbCompradorTableAdapter;
-            this.tableAdapterManager.tbCompraItemTableAdapter = null;
-            this.tableAdapterManager.tbCompraPagTableAdapter = null;
-            this.tableAdapterManager.tbCompraTableAdapter = null;
-            this.tableAdapterManager.tbFormaPagTableAdapter = null;
-            this.tableAdapterManager.tbFuncionarioTableAdapter = null;
-            this.tableAdapterManager.tbMovCliTableAdapter = null;
-            this.tableAdapterManager.tbMovComTableAdapter = null;
-            this.tableAdapterManager.tbPagarTableAdapter = null;
-            this.tableAdapterManager.tbProdutoTableAdapter = null;
-            this.tableAdapterManager.tbUsuarioTableAdapter = null;
-            this.tableAdapterManager.tbVendaItemTableAdapter = null;
-            this.tableAdapterManager.tbVendaPagTableAdapter = null;
-            this.tableAdapterManager.tbVendaTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Sucata.BDSucataDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // cdCompradorTextBox
             // 
@@ -296,9 +280,12 @@
             this.nmCompradorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmCompradorTextBox.ForeColor = System.Drawing.Color.Black;
             this.nmCompradorTextBox.Location = new System.Drawing.Point(174, 45);
+            this.nmCompradorTextBox.MaxLength = 50;
             this.nmCompradorTextBox.Name = "nmCompradorTextBox";
             this.nmCompradorTextBox.Size = new System.Drawing.Size(384, 26);
             this.nmCompradorTextBox.TabIndex = 4;
+            this.nmCompradorTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.nmCompradorTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // dsEnderecoTextBox
             // 
@@ -307,9 +294,12 @@
             this.dsEnderecoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dsEnderecoTextBox.ForeColor = System.Drawing.Color.Black;
             this.dsEnderecoTextBox.Location = new System.Drawing.Point(174, 78);
+            this.dsEnderecoTextBox.MaxLength = 50;
             this.dsEnderecoTextBox.Name = "dsEnderecoTextBox";
             this.dsEnderecoTextBox.Size = new System.Drawing.Size(384, 26);
             this.dsEnderecoTextBox.TabIndex = 6;
+            this.dsEnderecoTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.dsEnderecoTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // nrNumeroTextBox
             // 
@@ -317,10 +307,13 @@
             this.nrNumeroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompradorBindingSource, "nrNumero", true));
             this.nrNumeroTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nrNumeroTextBox.ForeColor = System.Drawing.Color.Black;
-            this.nrNumeroTextBox.Location = new System.Drawing.Point(642, 86);
+            this.nrNumeroTextBox.Location = new System.Drawing.Point(642, 78);
+            this.nrNumeroTextBox.MaxLength = 10;
             this.nrNumeroTextBox.Name = "nrNumeroTextBox";
             this.nrNumeroTextBox.Size = new System.Drawing.Size(100, 26);
             this.nrNumeroTextBox.TabIndex = 8;
+            this.nrNumeroTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.nrNumeroTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // nmBairroTextBox
             // 
@@ -329,9 +322,12 @@
             this.nmBairroTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmBairroTextBox.ForeColor = System.Drawing.Color.Black;
             this.nmBairroTextBox.Location = new System.Drawing.Point(174, 111);
+            this.nmBairroTextBox.MaxLength = 30;
             this.nmBairroTextBox.Name = "nmBairroTextBox";
             this.nmBairroTextBox.Size = new System.Drawing.Size(233, 26);
             this.nmBairroTextBox.TabIndex = 10;
+            this.nmBairroTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.nmBairroTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // nmCidadeTextBox
             // 
@@ -340,20 +336,12 @@
             this.nmCidadeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmCidadeTextBox.ForeColor = System.Drawing.Color.Black;
             this.nmCidadeTextBox.Location = new System.Drawing.Point(174, 144);
+            this.nmCidadeTextBox.MaxLength = 40;
             this.nmCidadeTextBox.Name = "nmCidadeTextBox";
             this.nmCidadeTextBox.Size = new System.Drawing.Size(308, 26);
             this.nmCidadeTextBox.TabIndex = 12;
-            // 
-            // sgEstadoTextBox
-            // 
-            this.sgEstadoTextBox.BackColor = System.Drawing.Color.White;
-            this.sgEstadoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompradorBindingSource, "sgEstado", true));
-            this.sgEstadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgEstadoTextBox.ForeColor = System.Drawing.Color.Black;
-            this.sgEstadoTextBox.Location = new System.Drawing.Point(174, 210);
-            this.sgEstadoTextBox.Name = "sgEstadoTextBox";
-            this.sgEstadoTextBox.Size = new System.Drawing.Size(21, 26);
-            this.sgEstadoTextBox.TabIndex = 14;
+            this.nmCidadeTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.nmCidadeTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // cdCEPMaskedTextBox
             // 
@@ -366,17 +354,24 @@
             this.cdCEPMaskedTextBox.Name = "cdCEPMaskedTextBox";
             this.cdCEPMaskedTextBox.Size = new System.Drawing.Size(100, 26);
             this.cdCEPMaskedTextBox.TabIndex = 16;
+            this.cdCEPMaskedTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.cdCEPMaskedTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // sgFIJUTextBox
             // 
             this.sgFIJUTextBox.BackColor = System.Drawing.Color.White;
+            this.sgFIJUTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.sgFIJUTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompradorBindingSource, "sgFIJU", true));
             this.sgFIJUTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgFIJUTextBox.ForeColor = System.Drawing.Color.Black;
-            this.sgFIJUTextBox.Location = new System.Drawing.Point(174, 177);
+            this.sgFIJUTextBox.Location = new System.Drawing.Point(174, 210);
+            this.sgFIJUTextBox.MaxLength = 1;
             this.sgFIJUTextBox.Name = "sgFIJUTextBox";
-            this.sgFIJUTextBox.Size = new System.Drawing.Size(29, 26);
+            this.sgFIJUTextBox.Size = new System.Drawing.Size(22, 26);
             this.sgFIJUTextBox.TabIndex = 18;
+            this.sgFIJUTextBox.TextChanged += new System.EventHandler(this.sgFIJUTextBox_TextChanged);
+            this.sgFIJUTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.sgFIJUTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // cdCPFMaskedTextBox
             // 
@@ -389,6 +384,8 @@
             this.cdCPFMaskedTextBox.Name = "cdCPFMaskedTextBox";
             this.cdCPFMaskedTextBox.Size = new System.Drawing.Size(131, 26);
             this.cdCPFMaskedTextBox.TabIndex = 20;
+            this.cdCPFMaskedTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.cdCPFMaskedTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // cdRGTextBox
             // 
@@ -397,9 +394,12 @@
             this.cdRGTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdRGTextBox.ForeColor = System.Drawing.Color.Black;
             this.cdRGTextBox.Location = new System.Drawing.Point(611, 210);
+            this.cdRGTextBox.MaxLength = 15;
             this.cdRGTextBox.Name = "cdRGTextBox";
             this.cdRGTextBox.Size = new System.Drawing.Size(131, 26);
             this.cdRGTextBox.TabIndex = 22;
+            this.cdRGTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.cdRGTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // cdCNPJMaskedTextBox
             // 
@@ -410,8 +410,10 @@
             this.cdCNPJMaskedTextBox.Location = new System.Drawing.Point(322, 242);
             this.cdCNPJMaskedTextBox.Mask = "00,000,000/0000-00";
             this.cdCNPJMaskedTextBox.Name = "cdCNPJMaskedTextBox";
-            this.cdCNPJMaskedTextBox.Size = new System.Drawing.Size(180, 26);
+            this.cdCNPJMaskedTextBox.Size = new System.Drawing.Size(160, 26);
             this.cdCNPJMaskedTextBox.TabIndex = 24;
+            this.cdCNPJMaskedTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.cdCNPJMaskedTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // cdIEMaskedTextBox
             // 
@@ -424,6 +426,8 @@
             this.cdIEMaskedTextBox.Name = "cdIEMaskedTextBox";
             this.cdIEMaskedTextBox.Size = new System.Drawing.Size(131, 26);
             this.cdIEMaskedTextBox.TabIndex = 26;
+            this.cdIEMaskedTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.cdIEMaskedTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // vlSaldoTextBox
             // 
@@ -432,9 +436,14 @@
             this.vlSaldoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vlSaldoTextBox.ForeColor = System.Drawing.Color.Black;
             this.vlSaldoTextBox.Location = new System.Drawing.Point(642, 276);
+            this.vlSaldoTextBox.MaxLength = 15;
             this.vlSaldoTextBox.Name = "vlSaldoTextBox";
             this.vlSaldoTextBox.Size = new System.Drawing.Size(100, 26);
             this.vlSaldoTextBox.TabIndex = 30;
+            this.vlSaldoTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vlSaldoTextBox.TextChanged += new System.EventHandler(this.vlSaldoTextBox_TextChanged);
+            this.vlSaldoTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.vlSaldoTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // dsTelefoneTextBox
             // 
@@ -443,9 +452,12 @@
             this.dsTelefoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dsTelefoneTextBox.ForeColor = System.Drawing.Color.Black;
             this.dsTelefoneTextBox.Location = new System.Drawing.Point(174, 276);
+            this.dsTelefoneTextBox.MaxLength = 40;
             this.dsTelefoneTextBox.Name = "dsTelefoneTextBox";
-            this.dsTelefoneTextBox.Size = new System.Drawing.Size(328, 26);
+            this.dsTelefoneTextBox.Size = new System.Drawing.Size(308, 26);
             this.dsTelefoneTextBox.TabIndex = 28;
+            this.dsTelefoneTextBox.Enter += new System.EventHandler(this.nmCompradorTextBox_Enter);
+            this.dsTelefoneTextBox.Leave += new System.EventHandler(this.nmCompradorTextBox_Leave);
             // 
             // panel1
             // 
@@ -461,7 +473,7 @@
             this.panel1.Controls.Add(this.btnProximo);
             this.panel1.Controls.Add(this.btnAnterior);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 308);
+            this.panel1.Location = new System.Drawing.Point(0, 322);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 142);
             this.panel1.TabIndex = 32;
@@ -492,6 +504,7 @@
             this.btnImprimir.Text = "F10 - Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnPesquisar
             // 
@@ -505,6 +518,7 @@
             this.btnPesquisar.Text = "F9 - Pequisar";
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
@@ -518,6 +532,7 @@
             this.btnCancelar.Text = "F8 - Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -531,6 +546,7 @@
             this.btnSalvar.Text = "F7 - Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -544,6 +560,7 @@
             this.btnExcluir.Text = "F6 - Excluir";
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -557,6 +574,7 @@
             this.btnAlterar.Text = "F5 - Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnNovo
             // 
@@ -570,6 +588,7 @@
             this.btnNovo.Text = "F4 - Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnProximo
             // 
@@ -583,6 +602,7 @@
             this.btnProximo.Text = "F3 - Próximo";
             this.btnProximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProximo.UseVisualStyleBackColor = true;
+            this.btnProximo.Click += new System.EventHandler(this.btnProximo_Click);
             // 
             // btnAnterior
             // 
@@ -596,14 +616,95 @@
             this.btnAnterior.Text = "F2 - Anterior";
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // sgEstadoComboBox
+            // 
+            this.sgEstadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbCompradorBindingSource, "sgEstado", true));
+            this.sgEstadoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sgEstadoComboBox.FormattingEnabled = true;
+            this.sgEstadoComboBox.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.sgEstadoComboBox.Location = new System.Drawing.Point(174, 177);
+            this.sgEstadoComboBox.MaxLength = 2;
+            this.sgEstadoComboBox.Name = "sgEstadoComboBox";
+            this.sgEstadoComboBox.Size = new System.Drawing.Size(46, 28);
+            this.sgEstadoComboBox.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(104, 213);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 19);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "J";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(52, 213);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 19);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "F";
             // 
             // frmComprador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(803, 450);
+            this.ClientSize = new System.Drawing.Size(803, 464);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(sgFIJULabel);
+            this.Controls.Add(this.sgEstadoComboBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(cdCompradorLabel);
             this.Controls.Add(this.cdCompradorTextBox);
@@ -618,10 +719,8 @@
             this.Controls.Add(nmCidadeLabel);
             this.Controls.Add(this.nmCidadeTextBox);
             this.Controls.Add(sgEstadoLabel);
-            this.Controls.Add(this.sgEstadoTextBox);
             this.Controls.Add(cdCEPLabel);
             this.Controls.Add(this.cdCEPMaskedTextBox);
-            this.Controls.Add(sgFIJULabel);
             this.Controls.Add(this.sgFIJUTextBox);
             this.Controls.Add(cdCPFLabel);
             this.Controls.Add(this.cdCPFMaskedTextBox);
@@ -642,6 +741,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compradores";
             this.Load += new System.EventHandler(this.frmComprador_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmComprador_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bDSucataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCompradorBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -656,14 +756,12 @@
         private BDSucataDataSet bDSucataDataSet;
         private System.Windows.Forms.BindingSource tbCompradorBindingSource;
         private BDSucataDataSetTableAdapters.tbCompradorTableAdapter tbCompradorTableAdapter;
-        private BDSucataDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox cdCompradorTextBox;
         private System.Windows.Forms.TextBox nmCompradorTextBox;
         private System.Windows.Forms.TextBox dsEnderecoTextBox;
         private System.Windows.Forms.TextBox nrNumeroTextBox;
         private System.Windows.Forms.TextBox nmBairroTextBox;
         private System.Windows.Forms.TextBox nmCidadeTextBox;
-        private System.Windows.Forms.TextBox sgEstadoTextBox;
         private System.Windows.Forms.MaskedTextBox cdCEPMaskedTextBox;
         private System.Windows.Forms.TextBox sgFIJUTextBox;
         private System.Windows.Forms.MaskedTextBox cdCPFMaskedTextBox;
@@ -683,5 +781,10 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnProximo;
         private System.Windows.Forms.Button btnAnterior;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ComboBox sgEstadoComboBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
